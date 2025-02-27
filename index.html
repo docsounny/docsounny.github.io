@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doc Sounny's Programming Enrichment Courses</title>
+  <!-- Google Fonts - Poppins (Modern Sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS CDN -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -18,6 +22,8 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      padding-bottom: 80px; /* Add padding to bottom of body to prevent footer overlap */
+      font-family: 'Poppins', sans-serif; /* Apply Poppins font to everything */
     }
     /* Splash Screen Styles */
     #splash {
@@ -42,14 +48,16 @@
     #splash h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      font-weight: 600; /* Semi-bold weight for headers */
     }
     #splash p {
       font-size: 1.5rem;
+      font-weight: 300; /* Light weight for subtitles */
     }
     /* Main content styles */
     .main-title {
       font-size: 3rem;
-      font-weight: bold;
+      font-weight: 700; /* Bold weight */
       color: #004d99;
     }
     .course-section {
@@ -78,9 +86,9 @@
       color: white;
       text-align: center;
       padding: 20px 0;
-      position: fixed;
+      position: relative; /* Change from fixed to relative position */
       width: 100%;
-      bottom: 0;
+      margin-top: 30px; /* Add some margin at the top */
     }
   </style>
 </head>
@@ -177,14 +185,16 @@
     <div class="row">
       <div class="col-12">
         <h2 class="text-center">Contact Doc Sounny</h2>
-        <form>
+        <form action="https://formspree.io/f/xanqryrv" method="POST">
           <div class="mb-3">
             <label for="name" class="form-label">Your Name</label>
             <input
               type="text"
               class="form-control"
               id="name"
+              name="name"
               placeholder="Enter your name"
+              required
             />
           </div>
           <div class="mb-3">
@@ -193,7 +203,9 @@
               type="email"
               class="form-control"
               id="email"
+              name="email"
               placeholder="Enter your email"
+              required
             />
           </div>
           <div class="mb-3">
@@ -201,8 +213,10 @@
             <textarea
               class="form-control"
               id="message"
+              name="message"
               rows="3"
               placeholder="Your message here..."
+              required
             ></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send Message</button>
@@ -223,4 +237,21 @@
     crossorigin="anonymous"
   ></script>
   <script
-    src="h
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93f/6RXC3NB3csMjB3Q8wKtq6jJpTHm0BeD6AYkeVKjA3BgJWc3V3jef+38dgt"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Custom JS for splash screen click -->
+  <script>
+    const splash = document.getElementById('splash');
+    splash.addEventListener('click', function() {
+      splash.classList.add('fade-out');
+      setTimeout(() => {
+        const coursesSection = document.getElementById('courses');
+        coursesSection.scrollIntoView({ behavior: 'smooth' });
+      }, 1000); // Matching the CSS transition duration
+    });
+  </script>
+</body>
+</html>
